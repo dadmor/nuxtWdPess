@@ -73,6 +73,9 @@ nav a{
 	text-decoration: none;
 	border-radius: 3px;
 }
+.cat-links .nuxt-link-active{
+	border:1px solid #070d4e;
+}
 
 
 
@@ -88,4 +91,18 @@ nav a{
 .pagination li a{
 	padding: 1em;
 	line-height: 2em;
+	text-decoration: none;
+}
+.pagination li a.nuxt-link-active{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

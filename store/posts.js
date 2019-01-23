@@ -18,7 +18,7 @@ export const actions = {
 		let params = '?_embed';
 		params = payload.page ? `${params}&page=${payload.page}` : params;
 		params = payload.cat_slug ? `${params}&categories=${payload.id}` : params;
-		await this.$axios.get(`https://www.portalyogi.pl/blog/wp-json/wp/v2/posts${params}`)
+		await this.$axios.get(`https://how2play.pl/wp-json/wp/v2/posts${params}`)
 		.then((res) => {
 			if (res.status === 200) {
 				commit('SET', {res, payload})

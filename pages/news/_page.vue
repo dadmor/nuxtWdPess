@@ -1,18 +1,21 @@
 <template>
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main grid d-three">
-			<article v-for="post in posts">
-				<card-standard :post="post"></card-standard>
-			</article>
-		</main>
-		<pagination/>
-	</section>
+
+		<section id="primary" class="content-area">
+			<main id="main" class="site-main grid d-three">
+				<article v-for="post in posts">
+					<card-standard :post="post"></card-standard>
+				</article>
+			</main>
+			<pagination/>
+		</section>
+
 </template>
 <script>
 	import cardStandard from '@/layouts/partials/card-standard.vue';
 	import pagination from '@/layouts/partials/pagination.vue';
 	import {mapState} from 'vuex';
 	export default {
+		transition: 'fade',
 		head() {
 			return {
 					title: 'Newests article - noblock axios store',

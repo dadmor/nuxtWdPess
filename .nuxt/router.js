@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _df6a1904 = () => interopDefault(import('../pages/news/_page.vue' /* webpackChunkName: "pages/news/_page" */))
-const _9e6a01b2 = () => interopDefault(import('../pages/post/_slug.vue' /* webpackChunkName: "pages/post/_slug" */))
-const _6b63dad7 = () => interopDefault(import('../pages/tag/_tags_page.vue' /* webpackChunkName: "pages/tag/_tags_page" */))
-const _2b15a058 = () => interopDefault(import('../pages/category/_cat_slug/_id/_page.vue' /* webpackChunkName: "pages/category/_cat_slug/_id/_page" */))
-const _1b011936 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _8ee9fb3a = () => interopDefault(import('../pages/news/_page.vue' /* webpackChunkName: "pages/news/_page" */))
+const _4de9e3e8 = () => interopDefault(import('../pages/post/_slug.vue' /* webpackChunkName: "pages/post/_slug" */))
+const _4587ef3c = () => interopDefault(import('../pages/tag/_tags_page.vue' /* webpackChunkName: "pages/tag/_tags_page" */))
+const _0e179ffd = () => interopDefault(import('../pages/category/_cat_slug/_id/_page.vue' /* webpackChunkName: "pages/category/_cat_slug/_id/_page" */))
+const _a69ae19e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -67,23 +67,23 @@ export function createRouter() {
 
     routes: [{
       path: "/news/:page?",
-      component: _df6a1904,
+      component: _8ee9fb3a,
       name: "news-page"
     }, {
       path: "/post/:slug?",
-      component: _9e6a01b2,
+      component: _4de9e3e8,
       name: "post-slug"
     }, {
       path: "/tag/:tags_page?",
-      component: _6b63dad7,
+      component: _4587ef3c,
       name: "tag-tags_page"
     }, {
       path: "/category/:cat_slug?/:id?/:page?",
-      component: _2b15a058,
+      component: _0e179ffd,
       name: "category-cat_slug-id-page"
     }, {
       path: "/",
-      component: _1b011936,
+      component: _a69ae19e,
       name: "index"
     }],
 

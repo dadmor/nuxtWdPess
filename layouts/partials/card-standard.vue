@@ -1,8 +1,10 @@
 <template>
 	<div>
 		<header class="entry-header">
-			<categories :post="post" />
-			<span v-if="post._embedded.author[0]">
+			<categories 
+				v-if="post._embedded['wp:term']"
+				:post="post" />
+			<span v-if="post._embedded.author">
 				author: {{ post._embedded.author[0].name }}
 			</span>
 		</header>

@@ -50,12 +50,19 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    ['@nuxtjs/pwa', { icon: false }],
-    // localStorage dont work - todo - repair it - dependencies in main .md file
-    // ['nuxt-vuex-localstorage', {
-    //   sessionStorage: ['posts']  //  If not entered, “sessionStorage” is the default value
-    // }]
+    '@nuxtjs/pwa'
   ],
+  workbox: {
+    offlineAssets:[
+      '_nuxt/*'
+    ],
+    offlinePage:[
+      '/.*'
+    ],
+    cachingExtensions:'workbox.precaching.*',
+    routingExtensions:'workbox.routing.*'
+    // Workbox options
+  },
   /*
   ** Axios module configuration
   */
