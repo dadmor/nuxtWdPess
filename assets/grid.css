@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+}
+.d-three{
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid img{
+	object-fit: cover;
+	width: 100%;
+	max-height: 100%;
+}
+.grid .panoramic-img img{
+	height: calc(15vw);
+}
+
