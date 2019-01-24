@@ -49,17 +49,16 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
-  //workbox: {
-    // offlineAssets:[
-    //   '_nuxt/*'
-    // ],
-    // offlinePage:[
-    //   '/.*'
-    // ],
-    // cachingExtensions:'workbox.precaching.*',
-    // routingExtensions:'workbox.routing.*'
-    // Workbox options
-  //},
+  workbox: {
+    offlineAssets:[
+      '_nuxt/*'
+    ],
+    offlinePage:[
+      '/.*'
+    ],
+    cachingExtensions:'workbox.precaching.*',
+    routingExtensions:'workbox.routing.*'
+  },
   /*
   ** Axios module configuration
   */

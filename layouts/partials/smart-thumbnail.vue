@@ -5,7 +5,9 @@
 		<nuxt-link :to="`/post/${post.slug}/${post.id}`">
 			<img 
 				:alt="getAlt()"
-				:src="image"
+				:src="post._embedded['wp:featuredmedia'][0].source_url"
+				:scrset="getSrcset('scr')"
+				:sizes="getSrcset('sizes')"
 				/>
 		</nuxt-link>
 		<div
@@ -16,40 +18,7 @@
 <script>
 	export default {
 		props: ['post'],
-        updated() {
-            if(this.width  < this.$el.offsetWidth){
-            	this.width = this.$el.offsetWidth;
-            }
-        },
-        mounted() {
-            if(this.width  < this.$el.offsetWidth){
-            	this.width = this.$el.offsetWidth;
-            }
-        },
-        data() {
-            return {
-                width: 100
-            }
-        },
-        computed: {
-		    image: function () {
-		      // `this` points to the vm instance
-		      return this.getMain(this.width);
-		    }
-		  },
 		methods: {
-			getMain(elementWidth){
-				if(this.post._embedded['wp:featuredmedia'][0]){ 
-					let o = Object.values(this.post._embedded['wp:featuredmedia'][0].media_details.sizes).sort(function(a, b){
-						return a.width-b.width
-					})
-					for (let i in o) {
-						if(elementWidth < o[i].width){
-							return o[i].source_url;
-						}
-					}
-				}
-			},
 			getSrcset(type){
 				let set = {scr:'',sizes:''};
 				if(this.post._embedded['wp:featuredmedia'][0]){
