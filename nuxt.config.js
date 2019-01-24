@@ -17,9 +17,6 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    bodyAttrs: {
-      class: 'home blog'
-    }
   },
 
   /*
@@ -52,17 +49,17 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
-  workbox: {
-    offlineAssets:[
-      '_nuxt/*'
-    ],
-    offlinePage:[
-      '/.*'
-    ],
-    cachingExtensions:'workbox.precaching.*',
-    routingExtensions:'workbox.routing.*'
+  //workbox: {
+    // offlineAssets:[
+    //   '_nuxt/*'
+    // ],
+    // offlinePage:[
+    //   '/.*'
+    // ],
+    // cachingExtensions:'workbox.precaching.*',
+    // routingExtensions:'workbox.routing.*'
     // Workbox options
-  },
+  //},
   /*
   ** Axios module configuration
   */

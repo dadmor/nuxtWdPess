@@ -15,15 +15,24 @@
 	export default {   
 		head() {
 			return {
-					title: 'Newests article - noblock axios store',
-					meta: [
-							{ name: 'description', content: 'This is my about description here.'},
-							{ name: 'keywords', content: 'about nuxt, nuxt info'},
-					]
+				bodyAttrs: {
+					class: 'home blog',
+				},
+				title: 'Newests article - noblock axios store',
+				meta: [
+					{ 
+						name: 'description', 
+						content: 'This is my about description here.'
+					},
+					{ 
+						name: 'keywords', 
+						content: 'about nuxt, nuxt info'
+					},
+				]
 			}
 		},
 		mounted() {
-			this.$store.dispatch('posts/get', this.$route.params) 
+			this.$store.dispatch('posts/getPosts', this.$route.params) 
 		},
 		computed: {
 			...mapState({posts: state => {

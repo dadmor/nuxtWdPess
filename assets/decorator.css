@@ -1,5 +1,7 @@
 /*http://www.ebizmba.com/articles/news-websites*/
-
+h1{
+	font-size:2.25em;
+}
 a{
 	color: #1A237E;
 }
@@ -31,8 +33,11 @@ nav a{
 	margin:1rem;
 	grid-gap: 1rem;
 }
-/* first article */
-.grid article{
+
+/* ------------------ */
+/* first article list */
+
+.grid article {
 	display:flex;
 	flex-direction: column;
 	border: 1px solid #eee;
@@ -77,6 +82,62 @@ nav a{
 	border:1px solid #070d4e;
 }
 
+/* ------------------ */
+/* single article     */
+body.single .entry-header,
+body.single .excerpt-area,
+body.single section#primary{
+	max-width: 780px;
+	margin-left:10%;
+	font-size:1.3rem;
+}
+body.single .entry-header h1{
+	margin-top:1.5em;
+	/*letter-spacing: 0.005em;*/
+	line-height:1.4em;
+	font-size: 2em;
+}
+body.single .excerpt-area{
+	font-size:1.6em;
+	color:#888;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	margin-top:2em;
+	margin-bottom:2.5em;
+}
+body.single .excerpt-area p{
+	margin: 1em 0;
+}
+body.single section#primary h1{
+	margin-top:1.5em;
+}
+body.single section#primary p{
+	font-size:1.3rem;
+}
+body.single section#primary ul{
+	margin: 0;
+    padding-left: 1.3em;
+    
+}
+body.single section#primary ul li{
+	font-size: 1.3rem;
+	margin-bottom:0.5em;
+}
+body.single section#primary blockquote{
+	margin: 1em -2em 2em;
+	padding-left:2em;
+	border-left: 3px solid #333;
+}
+body.single section#primary img{
+	margin-top:2em;
+	margin-bottom:2em;
+}
+body.single section#primary img.size-full{
+	width:80vw;
+	height:auto;
+}
+
+   
 
 
 .pagination{

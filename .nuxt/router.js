@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 
 const _8ee9fb3a = () => interopDefault(import('../pages/news/_page.vue' /* webpackChunkName: "pages/news/_page" */))
-const _4de9e3e8 = () => interopDefault(import('../pages/post/_slug.vue' /* webpackChunkName: "pages/post/_slug" */))
 const _4587ef3c = () => interopDefault(import('../pages/tag/_tags_page.vue' /* webpackChunkName: "pages/tag/_tags_page" */))
+const _97851492 = () => interopDefault(import('../pages/post/_slug/_id.vue' /* webpackChunkName: "pages/post/_slug/_id" */))
 const _0e179ffd = () => interopDefault(import('../pages/category/_cat_slug/_id/_page.vue' /* webpackChunkName: "pages/category/_cat_slug/_id/_page" */))
 const _a69ae19e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -70,13 +70,13 @@ export function createRouter() {
       component: _8ee9fb3a,
       name: "news-page"
     }, {
-      path: "/post/:slug?",
-      component: _4de9e3e8,
-      name: "post-slug"
-    }, {
       path: "/tag/:tags_page?",
       component: _4587ef3c,
       name: "tag-tags_page"
+    }, {
+      path: "/post/:slug?/:id?",
+      component: _97851492,
+      name: "post-slug-id"
     }, {
       path: "/category/:cat_slug?/:id?/:page?",
       component: _0e179ffd,

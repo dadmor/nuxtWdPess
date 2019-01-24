@@ -2,11 +2,12 @@
 	<figure 
 		v-if="post._embedded['wp:featuredmedia']"
 		class="panoramic-img">
-		<img 
-			:alt="getAlt()"
-			:src="img"
-			:srcset="getSrcset('src')"
-			:sizes="getSrcset('sizes')">
+		<nuxt-link :to="`/post/${post.slug}/${post.id}`">
+			<img 
+				:alt="getAlt()"
+				:src="image"
+				/>
+		</nuxt-link>
 		<div
 		class="n0img-space" 
 		v-if="!post._embedded['wp:featuredmedia']">&nbsp;</div>
@@ -15,14 +16,27 @@
 <script>
 	export default {
 		props: ['post'],
-		data: function () {
-			return {
-				img: ""
-			}
-		},
-		mounted(){
-			this.img = this.getMain(this.$el.clientWidth);
-		},
+        updated() {
+            if(this.width  < this.$el.offsetWidth){
+            	this.width = this.$el.offsetWidth;
+            }
+        },
+        mounted() {
+            if(this.width  < this.$el.offsetWidth){
+            	this.width = this.$el.offsetWidth;
+            }
+        },
+        data() {
+            return {
+                width: 100
+            }
+        },
+        computed: {
+		    image: function () {
+		      // `this` points to the vm instance
+		      return this.getMain(this.width);
+		    }
+		  },
 		methods: {
 			getMain(elementWidth){
 				if(this.post._embedded['wp:featuredmedia'][0]){ 
@@ -56,7 +70,6 @@
 					return this.post._embedded['wp:featuredmedia'][0].slug;
 				}
 			}
-
-		},
+		}
 	}
 </script>
