@@ -29,13 +29,15 @@ nav a{
 	margin-right: 1em;
 }
 
-.grid{
+section .grid{
 	margin:1rem;
 	grid-gap: 1rem;
 }
 
 /* ------------------ */
 /* first article list */
+
+/* cart vertical standard */
 
 .grid article {
 	display:flex;
@@ -163,7 +165,13 @@ body.single section#primary img.size-full{
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.25s ease-out;
 }
-
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+
+
+.post-index0 {
+  grid-column-end: span 1;
+  grid-row-end: span 2;
 }

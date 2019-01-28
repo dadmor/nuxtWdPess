@@ -16,11 +16,10 @@
 						</p>
 				</div>
 			</div>
-		</header>
+		</header><!-- .site-header -->
 		<navigation/>
-		<div id="content" class="site-content">
-			<nuxt/>
-		</div>
+		<!-- THIS NUXT ROUTE TO PAGE -->
+		<nuxt/>
 		<footer id="colophon" class="site-footer">
 				<div class="site-info">
 						<a class="site-name" href="http://mroczna.stronazen.pl/rest/" rel="home">REST sandbox</a>,
@@ -29,13 +28,16 @@
 						</a>
 				</div><!-- .site-info -->
 		</footer>
+		<layout-builder/>
 	</div>
 </template>
 <script>
-	import navigation from './partials/navigation.vue';
+	import navigation from '@/layouts/partials/navigation.vue';
+	import layoutBuilder from '@/components/layout-builder.vue';
 	export default {
 		components: {
-			navigation
+			navigation,
+			layoutBuilder
 		}
 	}
 </script>

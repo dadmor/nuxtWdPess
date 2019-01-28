@@ -1,42 +1,53 @@
 <template>
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main grid d-three">
-			<article v-for="post in posts">
-				<card-standard :post="post"></card-standard>
-			</article>
-		</main>
-		<ul class="pagination">
-			<li><nuxt-link to="/tag/name/1">1</nuxt-link></li>
-			<li><nuxt-link to="/tag/name/2">2</nuxt-link></li>
-			<li><nuxt-link to="/tag/name/3">3</nuxt-link></li>
-			<li><nuxt-link to="/tag/name/4">4</nuxt-link></li>
-			<li><nuxt-link to="/tag/name/5">5</nuxt-link></li>
-		</ul>
-	</section>
+	<div id="content" 
+		v-if="layout"
+		:class="[
+			'site-content', 
+			'grid', 
+			`gdw-${layout.pages[$route.name.split('-')[0]].sectionsProps.width}`
+			]">
+		<section-standard 
+			v-if="layout"
+			v-for="pageLayout in layout.pages[$route.name.split('-')[0]].sections"
+			:pageLayout="pageLayout" />
+	</div>
 </template>
 <script>
-	import cardStandard from '@/layouts/partials/card-standard.vue';
+	import sectionStandard from '@/layouts/partials/section-standard.vue';
 	import {mapState} from 'vuex';
+	import themeHelpers from '@/assets/themeHelpers.js'
 	export default {
+		transition: 'fade',
 		head() {
 			return {
-					title: 'Newests article - noblock axios store',
-					meta: [
-							{ name: 'description', content: 'This is my about description here.'},
-							{ name: 'keywords', content: 'about nuxt, nuxt info'},
-					]
+				bodyAttrs: {
+					class: 'home blog',
+				},
+				title: 'Newests article - noblock axios store',
+				meta: [
+					{ 
+						name: 'description', 
+						content: 'This is my about description here.'
+					},
+					{ 
+						name: 'keywords', 
+						content: 'about nuxt, nuxt info'
+					},
+				]
 			}
 		},
-		mounted() {
-			this.$store.dispatch('posts/get', this.$route.params) 
-		},
 		computed: {
-			...mapState({posts: state => {
-				return state.posts.posts
-			}})
+			...mapState(
+				{
+					layout: state => {
+						return state.layout
+					}
+				}
+			)
 		},
 		components: {
-			cardStandard
+			sectionStandard,
+			themeHelpers
 		}
 	}
 </script>

@@ -56,8 +56,8 @@ module.exports = {
     offlinePage:[
       '/.*'
     ],
-    cachingExtensions:'workbox.precaching.*',
-    routingExtensions:'workbox.routing.*'
+    // cachingExtensions:'workbox.precaching.*',
+    // routingExtensions:'workbox.routing.*'
   },
   /*
   ** Axios module configuration

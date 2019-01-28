@@ -1,18 +1,23 @@
 <template>
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main grid d-three">
-			<article v-for="post in posts">
-				<card-standard :post="post"></card-standard>
-			</article>
-		</main>
-		<pagination/>
-	</section>
+	<div id="content" 
+		v-if="layout"
+		:class="[
+			'site-content', 
+			'grid', 
+			`gdw-${layout.pages[$route.name.split('-')[0]].sectionsProps.width}`
+			]">
+		<section-standard 
+			v-if="layout"
+			v-for="pageLayout in layout.pages[$route.name.split('-')[0]].sections"
+			:pageLayout="pageLayout" />
+	</div>
 </template>
 <script>
-	import cardStandard from '@/layouts/partials/card-standard.vue';
-	import pagination from '@/layouts/partials/pagination.vue';
+	import sectionStandard from '@/layouts/partials/section-standard.vue';
 	import {mapState} from 'vuex';
-	export default {   
+	import themeHelpers from '@/assets/themeHelpers.js'
+	export default {
+		transition: 'fade',
 		head() {
 			return {
 				bodyAttrs: {
@@ -31,17 +36,18 @@
 				]
 			}
 		},
-		mounted() {
-			this.$store.dispatch('posts/getPosts', this.$route.params) 
-		},
 		computed: {
-			...mapState({posts: state => {
-				return state.posts.posts
-			}})
+			...mapState(
+				{
+					layout: state => {
+						return state.layout
+					}
+				}
+			)
 		},
 		components: {
-			cardStandard,
-			pagination
+			sectionStandard,
+			themeHelpers
 		}
 	}
 </script>
