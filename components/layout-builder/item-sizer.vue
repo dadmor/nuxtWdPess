@@ -1,0 +1,97 @@
+<template>
+	<div id="builder-item-sizer">
+		<div class="sizer-top" @click="sizerUp()">
+			<img src="@/assets/svg-ico/up-chevron.svg"/>
+		</div>
+		<div class="sizer-right" @click="sizerRight()">
+			<img src="@/assets/svg-ico/right-chevron.svg"/>
+		</div>
+		<div class="sizer-bottom" @click="sizerDown()">
+			<img src="@/assets/svg-ico/down-chevron.svg"/>
+		</div>
+		<div class="sizer-left" @click="sizerLeft()">
+			<img src="@/assets/svg-ico/left-chevron.svg"/>
+		</div>
+		<div class="sizer-options">
+			<img src="@/assets/svg-ico/cog.svg"/>
+		</div>
+	</div>	
+</template>
+<script>
+	export default {
+		props: ['me'],
+		methods: {
+			sizerUp(){
+				console.log('upSpan');
+			},
+			sizerDown(){
+				console.log('downSpan');
+			},
+			sizerLeft(){
+				let payload = {
+					route:this.$route,
+					me:this.me
+				}
+				this.$store.dispatch(
+					'layout/removeSectionSpan', 
+					payload) 
+			},
+			sizerRight(){
+				console.log(this.me);
+				let payload = {
+					route:this.$route,
+					me:this.me
+				}
+				this.$store.dispatch(
+					'layout/addSectionSpan', 
+					payload) 
+			},
+		},
+		components: {
+			//bSectionStandard,
+		}
+	}
+</script>
+<style>
+	#builder-item-sizer{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+	}
+	#builder-item-sizer > *{
+		position:absolute;
+		width:30px;
+		height:30px;
+		background:#6df3d699;
+		border-radius: 3px;
+		border:1px solid #32a48b;
+		cursor:pointer;
+	}
+	#builder-item-sizer img{
+		width:60%;
+		margin:20%;
+		opacity:0.5;
+	}
+	.sizer-top{
+		top:3px;
+		left:calc(50% - 15px);
+	}
+	.sizer-bottom{
+		bottom:3px;
+		left:calc(50% - 15px);
+	}
+	.sizer-left{
+		left:3px;
+		top:calc(50% - 15px);
+	}
+	.sizer-right{
+		right:3px;
+		top:calc(50% - 15px);
+	}
+	.sizer-options{
+		left:calc(50% - 15px);
+		top:calc(50% - 15px);
+	}
+</style>
