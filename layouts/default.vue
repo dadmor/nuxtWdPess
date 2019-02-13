@@ -28,17 +28,34 @@
 						</a>
 				</div><!-- .site-info -->
 		</footer>
-		<layout-builder/>
+		<!-- builder component -->
+		<component :is="layout.builder"/>
 	</div>
 </template>
 <script>
+	import {mapState} from 'vuex';
 	import navigation from '@/layouts/partials/navigation.vue';
+	/* Builder components */
+	import standBy from '@/components/layout-builder/stand-by.vue';
 	import layoutBuilder from '@/components/layout-builder.vue';
+	import sectionOptions from '@/components/layout-builder/section-options.vue';
+	/* !Builder components */
 	export default {
 		components: {
 			navigation,
-			layoutBuilder
-		}
+			layoutBuilder,
+			sectionOptions,
+			standBy
+		},
+		computed: {
+			...mapState(
+				{
+					layout: state => {
+						return state.layout
+					}
+				}
+			)
+		},
 	}
 </script>
 <style>

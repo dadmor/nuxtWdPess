@@ -12,7 +12,7 @@
 		<div class="sizer-left" @click="sizerLeft()">
 			<img src="@/assets/svg-ico/left-chevron.svg"/>
 		</div>
-		<div class="sizer-options">
+		<div class="sizer-options" @click="runOptions()">
 			<img src="@/assets/svg-ico/cog.svg"/>
 		</div>
 	</div>	
@@ -37,7 +37,6 @@
 					payload) 
 			},
 			sizerRight(){
-				console.log(this.me);
 				let payload = {
 					route:this.$route,
 					me:this.me
@@ -46,9 +45,12 @@
 					'layout/addSectionSpan', 
 					payload) 
 			},
+			runOptions(){
+				this.$store.dispatch('layout/setBuilder','section-options') 
+			}
 		},
 		components: {
-			//bSectionStandard,
+
 		}
 	}
 </script>

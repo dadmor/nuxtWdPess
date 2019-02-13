@@ -47,10 +47,15 @@ export const state = () => ({
 		}
 	},
 	header:{},
-	footer:{}
+	footer:{},
+	builder:'stand-by',
+	// ['stand-by', 'layout-builder', 'section-options']
 });
 
 export const mutations = {
+	SET_BUILDER(state, data) {
+		state.builder = data;
+	},
 	ADD_SECTION(state, data) {
 		state.pages[data.name.split('-')[0]]
 			.sections.push({
@@ -80,6 +85,9 @@ export const mutations = {
 };
 
 export const actions = {
+	async setBuilder({commit}, payload) {
+		commit('SET_BUILDER', payload);
+	},
 	async addSection({commit}, payload) {
 		commit('ADD_SECTION', payload);
 	},
