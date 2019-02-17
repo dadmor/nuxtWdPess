@@ -1,4 +1,5 @@
 export const state = () => ({
+	pageName:null,
 	pages:{
 		news:{
 			header:false,
@@ -50,44 +51,67 @@ export const state = () => ({
 	footer:{},
 	builder:'stand-by',
 	// ['stand-by', 'layout-builder', 'section-options']
+	selectedSection: null,
+	
 });
 
 export const mutations = {
+	SET_PAGE_NAME(state, data) {
+		state.pageName = data;
+	},
 	SET_BUILDER(state, data) {
 		state.builder = data;
 	},
+	SET_SECTION(state, data) {
+		state.selectedSection = data;
+	},
 	ADD_SECTION(state, data) {
-		state.pages[data.name.split('-')[0]]
+		state.pages[state.pageName]
 			.sections.push({
 				width:1
 			});
 	},
 	REMOVE_SECTION(state, data) {
-		state.pages[data.name.split('-')[0]]
+		state.pages[state.pageName]
 			.sections.splice(-1,1);
 	},
 	ADD_SECTION_ROW(state, data) {
-		state.pages[data.name.split('-')[0]]
+		state.pages[state.pageName]
 			.sectionsProps.width++;
 	},
 	REMOVE_SECTION_ROW(state, data) {
-		state.pages[data.name.split('-')[0]].
+		state.pages[state.pageName].
 			sectionsProps.width--;
 	},
-	ADD_SECTION_SPAN(state, data) {
-		state.pages[data.route.name.split('-')[0]].
-			sections[data.me.index].width++;
+	ADD_SECTION_SPAN(state) {
+		state.pages[state.pageName].
+			sections[state.selectedSection].width++;
 	},
-	REMOVE_SECTION_SPAN(state, data) {
-		state.pages[data.route.name.split('-')[0]].
-			sections[data.me.index].width--;
+	REMOVE_SECTION_SPAN(state) {
+		state.pages[state.pageName].
+			sections[state.selectedSection].width--;
 	},
 };
 
 export const actions = {
+	async setPageName({commit}, payload) {
+		commit('SET_PAGE_NAME', payload);
+	},
+	/* 
+		set (load) builder layout component 
+	*/
 	async setBuilder({commit}, payload) {
 		commit('SET_BUILDER', payload);
 	},
+	/* 
+		set acctual section index 
+	*/
+	async setSection({commit}, payload) {
+		commit('SET_SECTION', payload);
+	},
+	/* 
+		create new section in builder 
+	*/
 	async addSection({commit}, payload) {
 		commit('ADD_SECTION', payload);
 	},
@@ -100,11 +124,11 @@ export const actions = {
 	async removeSectionRow({commit}, payload) {
 		commit('REMOVE_SECTION_ROW', payload);
 	},
-	async addSectionSpan({commit}, payload) {
-		commit('ADD_SECTION_SPAN', payload);
+	async addSectionSpan({commit}) {
+		commit('ADD_SECTION_SPAN');
 	},
-	async removeSectionSpan({commit}, payload) {
-		commit('REMOVE_SECTION_SPAN', payload);
+	async removeSectionSpan({commit}) {
+		commit('REMOVE_SECTION_SPAN');
 	},
 
 	

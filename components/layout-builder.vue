@@ -12,7 +12,8 @@
 					<div>Sections layout</div>
 					<div
 						class="close" 
-						@click="$store.dispatch('layout/setBuilder','stand-by')">X</div>
+						@click="$store.dispatch(
+						'layout/setBuilder','stand-by')">X</div>
 				</header>
 				
 					<main
@@ -84,6 +85,7 @@
 	}
 </script>
 <style lang="scss">
+
 	#layout-builder{
 		
 		position: fixed;

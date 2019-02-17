@@ -52,11 +52,12 @@
 				{
 					layout: state => {
 						return state.layout
-					}
+					},
 				}
-			)
+			),
 		},
 	}
 </script>
 <style>
 </style>
+

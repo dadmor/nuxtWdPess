@@ -28,25 +28,16 @@
 				console.log('downSpan');
 			},
 			sizerLeft(){
-				let payload = {
-					route:this.$route,
-					me:this.me
-				}
-				this.$store.dispatch(
-					'layout/removeSectionSpan', 
-					payload) 
+				this.$store.dispatch('layout/setSection',this.me.index) 
+				this.$store.dispatch('layout/removeSectionSpan') 
 			},
 			sizerRight(){
-				let payload = {
-					route:this.$route,
-					me:this.me
-				}
-				this.$store.dispatch(
-					'layout/addSectionSpan', 
-					payload) 
+				this.$store.dispatch('layout/setSection',this.me.index) 
+				this.$store.dispatch('layout/addSectionSpan') 
 			},
 			runOptions(){
-				this.$store.dispatch('layout/setBuilder','section-options') 
+				this.$store.dispatch('layout/setSection',this.me.index) 
+				this.$store.dispatch('layout/setBuilder','section-options'); 
 			}
 		},
 		components: {
