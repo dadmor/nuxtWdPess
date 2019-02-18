@@ -1,6 +1,5 @@
 <template>
 	<div id="layout-builder">
-		
 		<div id="sections-builder">
 			<div 
 				class="section-remove"
@@ -13,7 +12,10 @@
 					<div
 						class="close" 
 						@click="$store.dispatch(
-						'layout/setBuilder','stand-by')">X</div>
+							'layout/set',{
+							p: ['builder'],
+							v: 'stand-by'
+						}) ">X</div>
 				</header>
 				
 					<main
@@ -46,8 +48,13 @@
 				@click="sectionAddRow()">
 			+ row</div>
 		</div>
-		
+		<div class="layer_rows">
+			<div
+			v-for="n in layout.pages[thisPage()].sectionsProps.width"
+			></div>
+		</div>
 	</div>
+	
 </template>
 <script>
 	import bSectionStandard from '@/components/layout-builder/section-standard.vue';
@@ -64,7 +71,7 @@
 		},
 		methods: {
 			thisPage(){
-				return this.$route.name.split('-')[0];
+				return this.layout.pageName;
 			},
 			sectionAdd(){
 				this.$store.dispatch('layout/addSection', this.$route) 
@@ -103,7 +110,7 @@
 			
 			display: flex;
 			align-items: center;
-
+			position:relative;
 
 			.section-remove{
 				background-color: #6df3d6;
@@ -158,6 +165,18 @@
 					border-right: none;
 				}
 			}
+		}
+	}
+	.layer_rows{
+		z-index:-1;
+		position:absolute;
+		width:100%;
+		height:100%;
+		display:flex;
+		>*{	
+			flex:1;
+			border-right:1px dashed #999;
+			height:100%;
 		}
 	}
 </style>

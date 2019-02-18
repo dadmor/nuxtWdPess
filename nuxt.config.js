@@ -38,7 +38,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '~/plugins/page-name.js', ssr: false}
+    {src: '~/plugins/page-name.js', ssr: false},
+    {src: '~/plugins/builder-mixins.js', ssr: false},
+
   ],
 
   /*

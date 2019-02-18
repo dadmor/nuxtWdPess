@@ -18,7 +18,17 @@
 	</div>	
 </template>
 <script>
+	import {mapState} from 'vuex';
 	export default {
+		computed: {
+			...mapState(
+				{
+					layout: state => {
+						return state.layout
+					}
+				}
+			)
+		},
 		props: ['me'],
 		methods: {
 			sizerUp(){
@@ -28,16 +38,43 @@
 				console.log('downSpan');
 			},
 			sizerLeft(){
-				this.$store.dispatch('layout/setSection',this.me.index) 
-				this.$store.dispatch('layout/removeSectionSpan') 
+				var decrement = this.layout.pages[this.layout.pageName].sections[this.me.index].width;
+				if(decrement > 1){
+					decrement--;
+				}
+				this.$store.dispatch('layout/set',{
+					p: ['sectionIndex'],
+					v: this.me.index
+				})
+				this.$store.dispatch('layout/set',{
+					p: ['pages',this.layout.pageName,'sections',this.me.index,'width'],
+					v: decrement
+				})
 			},
 			sizerRight(){
-				this.$store.dispatch('layout/setSection',this.me.index) 
-				this.$store.dispatch('layout/addSectionSpan') 
+				var increment = this.layout.pages[this.layout.pageName].sections[this.me.index].width;
+				increment++;
+
+				this.$store.dispatch('layout/set',{
+					p: ['sectionIndex'],
+					v: this.me.index
+				})
+				this.$store.dispatch('layout/set',{
+					p: ['pages',this.layout.pageName,'sections',this.me.index,'width'],
+					v: increment
+				})
 			},
 			runOptions(){
-				this.$store.dispatch('layout/setSection',this.me.index) 
-				this.$store.dispatch('layout/setBuilder','section-options'); 
+				this.$store.dispatch(
+					'layout/set',{
+					p: ['setSection'],
+					v: this.me.index
+				})
+				this.$store.dispatch(
+					'layout/set',{
+					p: ['builder'],
+					v: 'section-options'
+				})
 			}
 		},
 		components: {

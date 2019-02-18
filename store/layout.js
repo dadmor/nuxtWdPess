@@ -1,5 +1,6 @@
 export const state = () => ({
 	pageName:null,
+	sectionIndex:null,
 	pages:{
 		news:{
 			header:false,
@@ -51,20 +52,36 @@ export const state = () => ({
 	footer:{},
 	builder:'stand-by',
 	// ['stand-by', 'layout-builder', 'section-options']
-	selectedSection: null,
 	
 });
 
 export const mutations = {
-	SET_PAGE_NAME(state, data) {
-		state.pageName = data;
+	SET_IN_LAYOUT(state, name, value){
+		state[name] = value;
 	},
-	SET_BUILDER(state, data) {
-		state.builder = data;
+	SET_IN_CURRENT_PAGE(state, name, value){
+		state.pages[state.pageName][name] = value;
 	},
-	SET_SECTION(state, data) {
-		state.selectedSection = data;
+	SET_IN_CURRENT_SECTION(state, name, value){
+		state.pages[state.pageName].
+			sections[state.selectedSection][name] = value;
 	},
+
+	SET(state, data){
+		let level = 0;
+		data.p.reduce((a, b) => {
+			level++;
+			if (level === data.p.length){
+				a[b] = data.v;
+				return data.v;
+			} else {
+			 	return a[b];
+			}
+		}, state);
+	},
+
+    // --------------------------------
+
 	ADD_SECTION(state, data) {
 		state.pages[state.pageName]
 			.sections.push({
@@ -76,6 +93,8 @@ export const mutations = {
 			.sections.splice(-1,1);
 	},
 	ADD_SECTION_ROW(state, data) {
+		console.log('add',state.pages[state.pageName]
+			.sectionsProps.width);
 		state.pages[state.pageName]
 			.sectionsProps.width++;
 	},
@@ -94,20 +113,8 @@ export const mutations = {
 };
 
 export const actions = {
-	async setPageName({commit}, payload) {
-		commit('SET_PAGE_NAME', payload);
-	},
-	/* 
-		set (load) builder layout component 
-	*/
-	async setBuilder({commit}, payload) {
-		commit('SET_BUILDER', payload);
-	},
-	/* 
-		set acctual section index 
-	*/
-	async setSection({commit}, payload) {
-		commit('SET_SECTION', payload);
+	async set({commit}, payload) {
+		commit('SET', payload);
 	},
 	/* 
 		create new section in builder 
