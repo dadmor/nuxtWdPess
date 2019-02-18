@@ -38,7 +38,7 @@
 				console.log('downSpan');
 			},
 			sizerLeft(){
-				var decrement = this.layout.pages[this.layout.pageName].sections[this.me.index].width;
+				var decrement = this.layout.pages[this.layout.pageName].sections[this.me.index].rowSpan;
 				if(decrement > 1){
 					decrement--;
 				}
@@ -47,12 +47,12 @@
 					v: this.me.index
 				})
 				this.$store.dispatch('layout/set',{
-					p: ['pages',this.layout.pageName,'sections',this.me.index,'width'],
+					p: ['pages',this.layout.pageName,'sections',this.me.index,'rowSpan'],
 					v: decrement
 				})
 			},
 			sizerRight(){
-				var increment = this.layout.pages[this.layout.pageName].sections[this.me.index].width;
+				var increment = this.layout.pages[this.layout.pageName].sections[this.me.index].rowSpan;
 				increment++;
 
 				this.$store.dispatch('layout/set',{
@@ -60,7 +60,7 @@
 					v: this.me.index
 				})
 				this.$store.dispatch('layout/set',{
-					p: ['pages',this.layout.pageName,'sections',this.me.index,'width'],
+					p: ['pages',this.layout.pageName,'sections',this.me.index,'rowSpan'],
 					v: increment
 				})
 			},

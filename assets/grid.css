@@ -1,37 +1,38 @@
 .grid {
   display: grid;
 }
-.gdw-2{
+/* GridDesktop */
+.gd_rows-2{
 	grid-template-columns: repeat(2, 1fr);
 }
-.gdw-3{
+.gd_rows-3{
 	grid-template-columns: repeat(3, 1fr);
 }
-.gdw-4{
+.gd_rows-4{
 	grid-template-columns: repeat(4, 1fr);
 }
-.gdw-5{
+.gd_rows-5{
 	grid-template-columns: repeat(5, 1fr);
 }
-.gdw-6{
+.gd_rows-6{
 	grid-template-columns: repeat(6, 1fr);
 }
-.gdw-7{
+.gd_rows-7{
 	grid-template-columns: repeat(7, 1fr);
 }
-.gdw-8{
+.gd_rows-8{
 	grid-template-columns: repeat(8, 1fr);
 }
-.gdwSpan-2{
+.gd_rowSpan-2{
 	grid-column-end: span 2;
 }
-.gdwSpan-3{
+.gd_rowSpan-3{
 	grid-column-end: span 3;
 }
-.gdwSpan-4{
+.gd_rowSpan-4{
 	grid-column-end: span 4;
 }
-.gdwSpan-5{
+.gd_rowSpan-5{
 	grid-column-end: span 5;
 }
 .grid img{

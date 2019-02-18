@@ -2,8 +2,35 @@
 	<transition name="fade">
 	<div 
 		id="builder-section-standard" 
-		:class="[`gdwSpan-${me.pageLayout.width}`]">
+		:class="[`gd_rowSpan-${me.pageLayout.rowSpan}`]">
 
+		<div class="builder-section-item">
+			<div class="section-item-image">IMG</div>
+			<div class="section-item-content">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div class="builder-section-item">
+			<div class="section-item-image">IMG</div>
+			<div class="section-item-content">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div class="builder-section-item">
+			<div class="section-item-image">IMG</div>
+			<div class="section-item-content">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
 		<div class="builder-section-item">
 			<div class="section-item-image">IMG</div>
 			<div class="section-item-content">

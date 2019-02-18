@@ -4,17 +4,18 @@ export const state = () => ({
 	pages:{
 		news:{
 			header:false,
-			sectionsProps:{
-				width: 3,
-			},
+			sectionsRows: 3,
 			sections:[
 				{
 					id: 'primary',
 					rest: '/posts',
-					pagination: false,
+					type: 'list',
+					maxitems: 6,
 					component: 'card-standard',
-					width:2,
-					height:1,
+					pagination: false,
+					rowSpan: 2,
+					colSpan: 1,
+					itemsRow: 2,
 					items:{
 						item1:{
 							width:1,
@@ -85,7 +86,7 @@ export const mutations = {
 	ADD_SECTION(state, data) {
 		state.pages[state.pageName]
 			.sections.push({
-				width:1
+				rowSpan:1
 			});
 	},
 	REMOVE_SECTION(state, data) {
@@ -94,21 +95,21 @@ export const mutations = {
 	},
 	ADD_SECTION_ROW(state, data) {
 		console.log('add',state.pages[state.pageName]
-			.sectionsProps.width);
+			.sectionsRows);
 		state.pages[state.pageName]
-			.sectionsProps.width++;
+			.sectionsRows++;
 	},
 	REMOVE_SECTION_ROW(state, data) {
 		state.pages[state.pageName].
-			sectionsProps.width--;
+			sectionsRows--;
 	},
 	ADD_SECTION_SPAN(state) {
 		state.pages[state.pageName].
-			sections[state.selectedSection].width++;
+			sections[state.selectedSection].rowSpan++;
 	},
 	REMOVE_SECTION_SPAN(state) {
 		state.pages[state.pageName].
-			sections[state.selectedSection].width--;
+			sections[state.selectedSection].rowSpan--;
 	},
 };
 

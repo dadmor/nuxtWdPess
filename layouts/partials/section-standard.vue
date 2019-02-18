@@ -1,8 +1,8 @@
 <template>
 	<section id="primary" 
-	:class="['content-area',`gdwSpan-${pageLayout.width}`]">
+	:class="['content-area',`gd_rowSpan-${pageLayout.rowSpan}`]">
 
-		<main id="main" class="site-main grid gdw-2">
+		<main id="main" class="site-main grid gd_rows-2">
 			<article 
 				:class="`post-index${index}`"
 				v-for="(post, index) in posts">

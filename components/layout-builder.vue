@@ -21,7 +21,7 @@
 					<main
 						:class="[
 							'grid', 
-							`gdw-${layout.pages[thisPage()].sectionsProps.width}`
+							`gd_rows-${layout.pages[thisPage()].sectionsRows}`
 							]">
 						
 							<b-section-standard
@@ -50,7 +50,7 @@
 		</div>
 		<div class="layer_rows">
 			<div
-			v-for="n in layout.pages[thisPage()].sectionsProps.width"
+			v-for="n in layout.pages[thisPage()].sectionsRows"
 			></div>
 		</div>
 	</div>

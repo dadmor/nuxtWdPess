@@ -4,7 +4,7 @@
 		:class="[
 			'site-content', 
 			'grid', 
-			`gdw-${layout.pages[$route.name.split('-')[0]].sectionsProps.width}`
+			`gd_rows-${layout.pages[$route.name.split('-')[0]].sectionsRows}`
 			]">
 		<section-standard 
 			v-if="layout"
